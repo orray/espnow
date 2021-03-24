@@ -5,8 +5,11 @@ version: 1.0
 
 platforms: [ esp32 ]
 
-includes: [ include ]
-sources: [ src ]
+includes: 
+  - include
+
+sources: 
+  - src
 
 config_schema:
   - ["espnow", "o", {title: "ESPNOW configurations"}]
