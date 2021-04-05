@@ -350,7 +350,7 @@ static esp_err_t mgos_espnow_internal_add_peer(struct mgos_espnow_peer *peer){
     }else{
         newpeer.ifidx = ESP_IF_WIFI_STA;
     }
-    if(!mgos_sys_config_get_espnow_enable_broadcast() && mgos_sys_config_get_espnow_encrypt_test()){
+    if(!mgos_sys_config_get_espnow_enable_broadcast()){
         newpeer.lmk[16] = {0x01,0x02,0x03,0x04,0x01,0x02,0x03,0x04,0x01,0x02,0x03,0x04,0x01,0x02,0x03,0x04};
         newpeer.encrypt = true;
     }else{
@@ -454,10 +454,10 @@ bool mgos_espnow_init(){
     SLIST_INIT(&espnow_send_peer_cb_head);
     SLIST_INIT(&espnow_send_mac_cb_head);
     esp_now_init();
-    if(mgos_sys_config_get_espnow_enable_broadcast() && !mgos_sys_config_get_espnow_encrypt_test()){
+    if(mgos_sys_config_get_espnow_enable_broadcast()){
         mgos_espnow_add_broadcast_peer();
     }
-    if(!mgos_sys_config_get_espnow_enable_broadcast() && mgos_sys_config_get_espnow_encrypt_test()){
+    if(!mgos_sys_config_get_espnow_enable_broadcast()){
         uint8_t pmk[16] = {0x01,0x02,0x03,0x04,0x01,0x02,0x03,0x04,0x01,0x02,0x03,0x04,0x01,0x02,0x03,0x04};
         esp_now_set_pmk(pmk);
     }
