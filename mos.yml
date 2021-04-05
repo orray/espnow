@@ -14,7 +14,7 @@ config_schema:
   - ["espnow.peers_filename", "s", "espnow_peers.json", {title: "Filename where peers are stored"}]
   - ["espnow.enable_broadcast", "b", true, {title: "Register broadcast peer, channel will be the same as AP channel"}]
   - ["espnow.debug_level", "i", -1, {title: "Debug level"}]
-  - ["espnow.encrypt_test", "i", 0, {title: "Encrypt Test"}]
+  #- ["espnow.encrypt_test", "i", 0, {title: "Encrypt Test"}]
   
 libs:
   - origin: http://github.com/mongoose-os-libs/wifi
